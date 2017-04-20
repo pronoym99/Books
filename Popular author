@@ -1,0 +1,40 @@
+authors=[]
+
+class book:
+
+    def __init__(self):
+        self.isbn=0
+        self.name=""
+        self.author=""
+        self.price=0.0
+
+    def get_details(self):
+        self.isbn=int(raw_input("Enter ISBN code:"))
+        self.name=raw_input("Enter book name:")
+        self.author=raw_input("Enter name of author:")
+        authors.append(self.author)
+        self.price=float(raw_input("Enter book price:"))
+
+books=[]
+while True:
+    b=book()
+    b.get_details()
+    books.append(b)
+    ch=raw_input("Want to enter more?;y/n:")
+    if ch.upper()=="Y":
+        continue
+    elif ch.upper()=="N":
+        break
+    else:
+        print "Please enter proper choice"
+        continue
+    
+def popular(L):
+    C={}
+    for a in L:
+        C[a]=L.count(a)
+    for b in C.keys():
+        if C[b]==max(C.values()):
+            return b
+
+print "Most popular author-",popular(authors)
